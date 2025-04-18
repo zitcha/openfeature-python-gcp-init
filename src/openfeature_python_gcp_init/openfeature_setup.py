@@ -21,7 +21,6 @@ def init(
     sdk_key: str = None, config: ConfigOptions = {"stream": True}
 ) -> client.OpenFeatureClient:
     sdk_key = sdk_key or os.getenv("LAUNCHDARKLY_SDK_KEY")
-    config = config or {}
 
     if not sdk_key:
         raise EnvironmentError("LAUNCHDARKLY_SDK_KEY environment variable is not set")
@@ -31,7 +30,9 @@ def init(
     return api.get_client()
 
 
-def set_organisation_context(id: str, context: dict[str, Any] = {}) -> None:
+def set_organisation_context(id: str, context: dict[str, Any] = None) -> None:
+    if context is None:
+        context = {}
     set_context(id, context, Kind.ORGANISATION)
 
 
