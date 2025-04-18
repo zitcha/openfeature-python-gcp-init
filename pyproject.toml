@@ -6,7 +6,7 @@ authors = [
     {name = "Tristan Kenney",email = "tristan.kenney@zitcha.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.13,<4.0"
+requires-python = ">=3.10,<4.0"
 dependencies = [
     "launchdarkly-openfeature-server (>=0.3.0,<0.4.0)",
     "openfeature-sdk (>=0.8.1,<0.9.0)"
@@ -30,12 +30,12 @@ packages = [
 
 [tool.black]
 line-length = 88
-target-version = ['py311']
+target-version = ['py310']
 
 [tool.ruff]
 line-length = 88
 extend-select = ["E", "F", "I"]
-target-version = "py311"
+target-version = "py310"
 
 [tool.poetry.group.dev.dependencies]
 black = ">=25.1.0,<26.0.0"

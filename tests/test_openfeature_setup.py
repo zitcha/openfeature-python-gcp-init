@@ -43,6 +43,14 @@ def test_set_context_merges_context_with_kind(mock_set_context):
 
 
 @patch("openfeature_python_gcp_init.openfeature_setup.set_context")
+def test_set_organisation_context_with_default_context(mock_set_context):
+    openfeature_setup.set_organisation_context("org-456")
+    mock_set_context.assert_called_once_with(
+        "org-456", {}, openfeature_setup.Kind.ORGANISATION
+    )
+
+
+@patch("openfeature_python_gcp_init.openfeature_setup.set_context")
 def test_set_organisation_context_calls_set_context(mock_set_context):
     context = {"foo": "bar"}
     openfeature_setup.set_organisation_context("org-456", context)
