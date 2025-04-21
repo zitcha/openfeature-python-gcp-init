@@ -2,12 +2,6 @@
 
 A Python package to initialise and configure the OpenFeature client with the LaunchDarkly provider on Google Cloud Platform.
 
-## Features
-
-- Simplified initialisation of the OpenFeature client
-- Automatic configuration from environment variables
-- Helper functions for setting evaluation contexts (e.g., organisation)
-
 ## Installation
 
 ```bash
@@ -17,7 +11,7 @@ poetry add openfeature-python-gcp-init
 Or install from source:
 
 ```bash
-git clone https://github.com/<your-username>/openfeature-python-gcp-init.git
+git clone https://github.com/zitcha/openfeature-python-gcp-init.git
 cd openfeature-python-gcp-init
 poetry install
 ```
