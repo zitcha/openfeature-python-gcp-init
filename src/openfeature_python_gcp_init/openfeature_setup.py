@@ -26,7 +26,7 @@ def init(
     poll_interval: Optional[int] = None,
 ) -> client.OpenFeatureClient:
     """
-    Initialize the OpenFeature client using LaunchDarkly provider.
+    Initialise the OpenFeature client using LaunchDarkly provider.
 
     Args:
         sdk_key: LaunchDarkly SDK key; if not provided, read from environment.
@@ -67,6 +67,8 @@ def set_context(targeting_key: str, context: Optional[Dict[str, Any]], kind: Kin
         context: Additional context attributes.
         kind: The kind of context (e.g., Organisation).
     """
+    if context is None:
+        context = {}
     context = EvaluationContext(targeting_key, {**context, "kind": kind.value})
     api.set_evaluation_context(context)
 
