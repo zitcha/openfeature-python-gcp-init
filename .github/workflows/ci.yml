@@ -28,5 +28,13 @@ jobs:
       - name: Run pre-commit
         run: poetry run pre-commit run --all-files
 
-      - name: Run tests
-        run: poetry run pytest 
+      - name: Run tests with coverage
+        run: poetry run pytest --cov=src --cov-report=xml --cov-branch
+      
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: coverage.xml
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: zitcha/openfeature-python-gcp-init
+
