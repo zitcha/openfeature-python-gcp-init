@@ -1,0 +1,47 @@
+[project]
+name = "openfeature-python-gcp-init"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Tristan Kenney",email = "tristan.kenney@zitcha.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "launchdarkly-openfeature-server (>=0.3.0,<0.4.0)",
+    "openfeature-sdk (>=0.8.1,<0.9.0)",
+    "python-decouple (>=3.8,<4.0)"
+]
+keywords = ["feature-flags", "openfeature", "launchdarkly"]
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+packages = [
+  { include = "openfeature_python_gcp_init", from = "src" }
+]
+
+[tool.black]
+line-length = 120
+target-version = ['py312']
+
+[tool.ruff]
+line-length = 120
+lint.extend-select = ["E", "F", "I"]
+target-version = "py312"
+
+[tool.poetry.group.dev.dependencies]
+black = ">=25.1.0,<26.0.0"
+ruff = "*"
+pytest = "*"
+mypy = "*"
+pre-commit = "^4.2.0"
+pytest-cov = "^6.1.1"
