@@ -120,7 +120,7 @@ class TestDefaultValueBehavior:
         assert client.get_integer_value("max-items", 10) == 10
         assert client.get_integer_value("retry-count", 3) == 3
         assert client.get_integer_value("zero-default", 0) == 0
-        
+
         # Test float flag evaluations return the provided defaults
         assert client.get_float_value("timeout", 30.5) == 30.5
 
