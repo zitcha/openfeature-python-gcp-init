@@ -53,29 +53,3 @@ jobs:
       with:
         file: ./coverage.xml
         fail_ci_if_error: false
-
-  build:
-    runs-on: ubuntu-latest
-    needs: quality-checks
-    
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: "3.12"
-    
-    - name: Install Poetry
-      uses: snok/install-poetry@v1
-      with:
-        poetry-version: latest
-    
-    - name: Build package
-      run: poetry build
-    
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: dist
-        path: dist/
