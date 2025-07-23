@@ -21,10 +21,30 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     
-    - name: Install Poetry
-      uses: snok/install-poetry@v1
+    - name: Cache Poetry installation
+      uses: actions/cache@v4
       with:
-        poetry-version: latest
+        path: |
+          ~/.local/bin/poetry
+          ~/.local/share/pypoetry
+        key: poetry-install-${{ runner.os }}-${{ hashFiles('.github/workflows/ci.yml') }}
+    
+    - name: Install Poetry
+      run: |
+        if ! command -v poetry &> /dev/null; then
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+        fi
+        poetry --version
+      shell: bash
+    
+    - name: Cache dependencies
+      uses: actions/cache@v4
+      with:
+        path: .venv
+        key: venv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
+        restore-keys: |
+          venv-${{ runner.os }}-${{ matrix.python-version }}-
     
     - name: Install dependencies
       run: |
